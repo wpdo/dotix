@@ -1,0 +1,54 @@
+# Copyright (C) 2019 Dotix
+# This file is distributed under the same license as the Dotix package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Dotix 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/dotix\n"
+"POT-Creation-Date: 2019-08-20 14:17:01+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: order.cls.php:56
+msgid "Credits remaining"
+msgstr ""
+
+#: order.cls.php:76
+msgid "Credits Total"
+msgstr ""
+
+#: order.cls.php:77
+msgid "Credits Left"
+msgstr ""
+
+#: product.cls.php:33
+msgid "Containing credits"
+msgstr ""
+
+#: product.cls.php:36
+msgid ""
+"Enter the credits to be refilled to the order if users finished payment."
+msgstr ""
+
+#: product.cls.php:62
+msgid "Credits"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Dotix"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/wpdo/dotix"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Ticket/credit system for WooCommerce"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WPDO"
+msgstr ""
