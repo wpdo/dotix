@@ -210,7 +210,7 @@ class Dotix_Order
 		return array(
 			'order_id'	=> $order->get_id(),
 			'status'	=> $order->get_status(),
-			'consume'	=> $num,
+			'consumed'	=> $num,
 			'balance'	=> $new_bal,
 		) ;
 	}
