@@ -205,6 +205,7 @@ class Dotix_Order
 
 		$new_bal = $bal - $num ;
 		$order->update_meta_data( DOTIX_TAG, $new_bal ) ;
+		$order->save() ;
 
 		return array(
 			'order_id'	=> $order->get_id(),
