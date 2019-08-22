@@ -74,10 +74,6 @@ Description: Not enough balance left in this order.
 
 This plugin will enable the connection between your app and WooCommerce orders for digital credits usage. It can be used to check the remaining credits in one order, or consume them.
 
-== Screenshots ==
-
-1. Credits on the order Thanks You page
-
 == Changelog ==
 
 = 1.0 - Aug 20 2019 =
