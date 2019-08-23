@@ -21,6 +21,29 @@ class Dotix_Order
 	}
 
 	/**
+	 * Init
+	 */
+	public function init()
+	{
+ 		// Backend order related
+		add_filter( 'manage_edit-shop_order_columns', array( $this, 'column_title' ) ) ;
+
+		add_action( 'manage_shop_order_posts_custom_column', array( $this, 'column' ) ) ;
+
+		// Frontend order
+		add_action( 'woocommerce_order_item_meta_start', array( $this, 'field_frontend' ), 10, 2 ) ;
+
+		add_action( 'woocommerce_order_details_after_order_table', array( $this, 'tix_frontend' ), 10 ) ;
+
+		// Frontend order auto complete paid orders
+		add_action( 'woocommerce_thankyou', array( $this, 'maybe_auto_complete' ), 20, 1 ) ;
+
+		// Frontend order adding hook
+		add_action( 'woocommerce_checkout_create_order', array( $this, 'fillup' ), 10 ) ;
+
+	}
+
+	/**
 	 * Display containing tix in an order list
 	 *
 	 * @since  1.0

@@ -20,6 +20,24 @@ class Dotix_Product
 	{
 	}
 
+	/**
+	 * init
+	 */
+	public function init()
+	{
+		// Backend product related
+		add_action( 'woocommerce_product_options_general_product_data', array( $this, 'field' ) ) ;
+
+		add_action( 'woocommerce_process_product_meta', array( $this, 'field_save' ) ) ;
+
+		add_filter( 'manage_edit-product_columns', array( $this, 'column_title' ), 15 ) ;
+
+		add_action( 'manage_product_posts_custom_column', array( $this, 'column' ), 10, 2 ) ;
+
+		// Frontend product
+		add_action( 'woocommerce_product_meta_start', array( $this, 'field_frontend' ), 10 ) ;
+
+	}
 
 	/**
 	 * Hook to product edit page

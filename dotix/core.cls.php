@@ -20,6 +20,17 @@ class Dotix
 	{
 	}
 
+	public function init()
+	{
+		$__conf = Dotix_Conf::get_instance() ;
+		$__gui = Dotix_GUI::get_instance() ;
+		Dotix_Order::get_instance()->init() ;
+		Dotix_Product::get_instance()->init() ;
+		Dotix_REST::get_instance()->init() ;
+
+		// Vendor init
+		Dotix_Vendor::get_instance()->init() ;
+	}
 
 	/**
 	 * Get the current instance object.

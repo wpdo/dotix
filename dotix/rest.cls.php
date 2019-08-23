@@ -21,6 +21,15 @@ class Dotix_REST
 	}
 
 	/**
+	 * Init
+	 */
+	public function init()
+	{
+		// REST order hooks
+		add_action( 'rest_api_init', array( $this, 'api_init' ) ) ;
+	}
+
+	/**
 	 * Register REST hooks
 	 *
 	 * @since  1.0
