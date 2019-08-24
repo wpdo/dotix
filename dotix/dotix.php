@@ -3,7 +3,7 @@
  * Plugin Name:       Dotix
  * Plugin URI:        https://wordpress.org/support/plugin/dotix/
  * Description:       Ticket/credit system for WooCommerce
- * Version:           1.0
+ * Version:           1.1
  * Author:            WPDO
  * License:           GPLv3
  * License URI:       http://www.gnu.org/licenses/gpl.html
@@ -31,7 +31,7 @@ if ( defined( 'DOTIX_V' ) ) {
 	return ;
 }
 
-define( 'DOTIX_V', '1.0' ) ;
+define( 'DOTIX_V', '1.1' ) ;
 
 ! defined( 'DOTIX_TAG' ) && define( 'DOTIX_TAG', 'dotix_credit' ) ;
 ! defined( 'DOTIX_DIR' ) && define( 'DOTIX_DIR', dirname( __FILE__ ) . '/' ) ;// Full absolute path '/usr/local/***/wp-content/plugins/dotix/' or MU

@@ -221,6 +221,8 @@ class Dotix_Order
 			return new WP_Error( 'lack_of_bal', 'Not enough credits.', array( 'status' => 409 ) ) ;
 		}
 
+		// Todo: check if allow this tix type
+
 		$num = $_POST[ 'num' ] == 'max' ? $bal : (int) $_POST[ 'num' ] ;
 
 		if ( ! $num ) {
