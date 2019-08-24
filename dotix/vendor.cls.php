@@ -113,7 +113,7 @@ class Dotix_Vendor
 
 		$order = wc_get_order( $post->ID );
 
-		$this->qrcode( $order->get_order_key(), 5 );
+		$this->qrcode( $order->get_order_key(), 7, 1 );
 
 		echo '<br /> <h2>' . $order->get_meta( DOTIX_TAG ) . ' credits left</h2>';
 	}
@@ -121,17 +121,17 @@ class Dotix_Vendor
 	/**
 	 * QRCode Parse
 	 */
-	public function qrcode( $order_key, $size = 20 )
+	public function qrcode( $order_key, $size = 20, $margin = 3 )
 	{
-		echo do_shortcode( '[qrcode size="' . $size . '"]' . home_url( '/' ) . '?qrtix=' . $order_key . '[/qrcode]' );
+		echo do_shortcode( "[qrcode size='$size' margin='$margin']" . home_url( '/' ) . '?qrtix=' . $order_key . '[/qrcode]' );
 	}
 
 	/**
 	 * QRCode for vendor data
 	 */
-	public function vendor_qrcode( $vendor_data, $size = 20 )
+	public function vendor_qrcode( $vendor_data, $size = 20, $margin = 3 )
 	{
-		echo do_shortcode( '[qrcode size="' . $size . '"]' . json_encode( $vendor_data ) . '[/qrcode]' );
+		echo do_shortcode( "[qrcode size='$size' margin='$margin']" . json_encode( $vendor_data ) . '[/qrcode]' );
 	}
 
 	/**
@@ -158,7 +158,7 @@ class Dotix_Vendor
 			'id'		=> $post->ID,
 			'key'		=> $auth_key,
 		);
-		$this->vendor_qrcode( $vendor_data, 6 );
+		$this->vendor_qrcode( $vendor_data, 7, 1 );
 
 	}
 
