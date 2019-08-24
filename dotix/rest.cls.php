@@ -38,6 +38,12 @@ class Dotix_REST
 	public function api_init()
 	{
 		$__order = Dotix_Order::get_instance() ;
+		$__vendor = Dotix_Vendor::get_instance() ;
+
+		register_rest_route( 'dotix/v1', '/vendor/(?P<id>\d+)/(?P<hash>\w+)', array(
+			'methods' => 'GET',
+			'callback' => array( $__vendor, 'rest_vendor_get' ),
+		) );
 
 		register_rest_route( 'dotix/v1', '/order/(?P<hash>\w+)', array(
 			'methods' => 'GET',

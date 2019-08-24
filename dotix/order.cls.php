@@ -204,10 +204,15 @@ class Dotix_Order
 			return new WP_Error( 'wong_status', 'The order is not under completed status.', array( 'status' => 409 ) ) ;
 		}
 
-		if ( empty( $_POST[ 'num' ] ) ) {
+		if ( empty( $_POST[ 'num' ] ) || empty( $_POST[ 'app_id' ] ) || empty( $_POST[ 'app_key' ] ) ) {
 			// @see https://softwareengineering.stackexchange.com/questions/341732/should-http-status-codes-be-used-to-represent-business-logic-errors-on-a-server
 			// The 409 (Conflict) status code indicates that the request could not be completed due to a conflict with the current state of the target resource.
-			return new WP_Error( 'lack_of_param', 'Please spedify the credits to consume.', array( 'status' => 409 ) ) ;
+			return new WP_Error( 'lack_of_param', 'Please spedify the num/app_id/app_key.', array( 'status' => 409 ) ) ;
+		}
+
+		// Validate vendor info
+		if ( is_wp_error( $err = Dotix_Vendor::get_instance()->validate( $_POST[ 'app_id' ], $_POST[ 'app_key' ] ) ) ) {
+			return $err ;
 		}
 
 		$bal = $order->get_meta( DOTIX_TAG ) ;

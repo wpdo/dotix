@@ -154,12 +154,57 @@ class Dotix_Vendor
 		require DOTIX_DIR . 'tpl/vendor_dotix.tpl.php';
 
 		$vendor_data = array(
-			'home'		=> home_url( '/' ),
-			'app_id'	=> $post->ID,
-			'auth_key'	=> $auth_key,
+			'url'		=> home_url( '/' ),
+			'id'		=> $post->ID,
+			'key'		=> $auth_key,
 		);
-		$this->vendor_qrcode( $vendor_data, 5 );
+		$this->vendor_qrcode( $vendor_data, 6 );
 
+	}
+
+	/**
+	 * Validate vendor ID and key info
+	 */
+	public function validate( $post_id, $key )
+	{
+		if ( get_post_meta( $post_id, 'dotix_hash', true ) !== $key ) {
+			return new WP_Error( 'wrong_hash', 'Failed to validate vendor hash key', array( 'status' => 422 ) ) ;
+		}
+
+	}
+
+	/**
+	 * Vendor info REST call
+	 */
+	public function rest_vendor_get( $data )
+	{
+		if ( empty( $data[ 'id' ] ) || empty( $data[ 'hash' ] ) ) {
+			return new WP_Error( 'lack_of_param', 'Failed to parse id/hash', array( 'status' => 422 ) ) ;
+		}
+
+		$post = get_post( $data[ 'id' ] ) ;
+
+		if ( is_wp_error( $err = $this->validate( $post->ID, $data[ 'hash' ] ) ) ) {
+			return $err ;
+		}
+
+		$res = array(
+			'site'	=> get_bloginfo( 'name' ),
+			'vendor_name'	=> $post->post_title,
+			'price_list'	=> array(),
+		) ;
+
+		// Append all ticket types
+		$price_list = wp_get_post_terms( $post->ID, 'vendor_dotix' ) ;
+		foreach ( $price_list as $v ) {
+			$res[ 'price_list' ][] = array(
+				'title' => $v->name,
+				'id' 	=> $v->term_id,
+				'tix'	=> get_term_meta( $v->term_id, 'dotix', true ),
+			) ;
+		}
+
+		return $res ;
 	}
 
 	/**
