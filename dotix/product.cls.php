@@ -112,7 +112,7 @@ class Dotix_Product
 			return ;
 		}
 
-		echo "<span>Credits containing</span>: <span style='font-weight:bold; color:purple;'>$credit</span>" ;
+		echo "<span class='product_meta--credits'>Credits containing: <strong>$credit</strong></span>" ;
 	}
 
 
