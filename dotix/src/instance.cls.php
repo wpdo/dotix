@@ -2,7 +2,7 @@
 /**
  * The abstract instance
  *
- * @since      	1.0
+ * @since      	1.2
  */
 namespace dotix;
 

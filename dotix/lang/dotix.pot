@@ -1,0 +1,269 @@
+# Copyright (C) 2019 Dotix
+# This file is distributed under the same license as the Dotix package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Dotix 1.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/dotix\n"
+"POT-Creation-Date: 2019-10-01 20:36:49+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: src/admin.cls.php:63
+msgid "Settings"
+msgstr ""
+
+#: src/file.cls.php:111
+msgid "Folder does not exist: %s"
+msgstr ""
+
+#: src/file.cls.php:118
+msgid "Can not create folder: %1$s. Error: %2$s"
+msgstr ""
+
+#: src/file.cls.php:124
+msgid "Folder is not writable: %s."
+msgstr ""
+
+#: src/file.cls.php:130 src/file.cls.php:134
+msgid "File %s is not writable."
+msgstr ""
+
+#: src/file.cls.php:141
+msgid "Failed to write to %s."
+msgstr ""
+
+#: src/order.cls.php:55 src/product.cls.php:107
+msgid "%s containing"
+msgstr ""
+
+#: src/order.cls.php:71
+msgid "%s remaining"
+msgstr ""
+
+#: src/order.cls.php:81
+msgid "%s not available yet due to order status"
+msgstr ""
+
+#: src/order.cls.php:94
+msgid "%s Total"
+msgstr ""
+
+#: src/order.cls.php:95
+msgid "%s Left"
+msgstr ""
+
+#: src/product.cls.php:43
+msgid "Containing %s"
+msgstr ""
+
+#: src/product.cls.php:46
+msgid ""
+"Enter the credits to be refilled to the order if the user finish payment."
+msgstr ""
+
+#: src/util.cls.php:112
+msgid "just now"
+msgstr ""
+
+#: src/util.cls.php:112
+msgid "right now"
+msgstr ""
+
+#: src/util.cls.php:114
+msgid " %s ago"
+msgstr ""
+
+#: src/vendor.cls.php:100
+msgid "Barcode"
+msgstr ""
+
+#: src/vendor.cls.php:138
+msgid "Dotix Info"
+msgstr ""
+
+#: src/vendor.cls.php:230 src/vendor.cls.php:232 src/vendor.cls.php:246
+msgid "DotixApp"
+msgstr ""
+
+#: src/vendor.cls.php:231
+msgid "App"
+msgstr ""
+
+#: src/vendor.cls.php:233
+msgid "Parent App"
+msgstr ""
+
+#: src/vendor.cls.php:234
+msgid "All Apps"
+msgstr ""
+
+#: src/vendor.cls.php:235
+msgid "View App"
+msgstr ""
+
+#: src/vendor.cls.php:236
+msgid "Add New App"
+msgstr ""
+
+#: src/vendor.cls.php:237
+msgid "Add New"
+msgstr ""
+
+#: src/vendor.cls.php:238
+msgid "Edit App"
+msgstr ""
+
+#: src/vendor.cls.php:239
+msgid "Update App"
+msgstr ""
+
+#: src/vendor.cls.php:240
+msgid "Search App"
+msgstr ""
+
+#: src/vendor.cls.php:241
+msgid "Not Found"
+msgstr ""
+
+#: src/vendor.cls.php:242
+msgid "Not found in Trash"
+msgstr ""
+
+#: src/vendor.cls.php:247
+msgid "Dotix connection list"
+msgstr ""
+
+#: src/vendor.cls.php:281 src/vendor.cls.php:282
+msgid "Dotix Set"
+msgstr ""
+
+#: src/vendor.cls.php:283
+msgid "Search Dotix Set"
+msgstr ""
+
+#: src/vendor.cls.php:284
+msgid "All Dotix Set"
+msgstr ""
+
+#: src/vendor.cls.php:285
+msgid "Parent Dotix Set"
+msgstr ""
+
+#: src/vendor.cls.php:286
+msgid "Parent Dotix Set:"
+msgstr ""
+
+#: src/vendor.cls.php:287
+msgid "Edit Dotix Set"
+msgstr ""
+
+#: src/vendor.cls.php:288
+msgid "Update Dotix Set"
+msgstr ""
+
+#: src/vendor.cls.php:289
+msgid "Add New Dotix Set"
+msgstr ""
+
+#: src/vendor.cls.php:290
+msgid "New Dotix Set Name"
+msgstr ""
+
+#: src/vendor.cls.php:291
+msgid "Dotix Unit Set"
+msgstr ""
+
+#: src/vendor.cls.php:341
+msgid "Unit"
+msgstr ""
+
+#: tpl/settings.tpl.php:33
+msgid "Dotix Settings"
+msgstr ""
+
+#: tpl/settings.tpl.php:45
+msgid "QR Code"
+msgstr ""
+
+#: tpl/settings.tpl.php:47 tpl/settings.tpl.php:68
+msgid "Enable"
+msgstr ""
+
+#: tpl/settings.tpl.php:48
+msgid "QRCode size"
+msgstr ""
+
+#: tpl/settings.tpl.php:50
+msgid "This will change the QR Code size shown in the order detail page."
+msgstr ""
+
+#: tpl/settings.tpl.php:56
+msgid "Credit title"
+msgstr ""
+
+#: tpl/settings.tpl.php:60
+msgid "Rename the credit title."
+msgstr ""
+
+#: tpl/settings.tpl.php:66
+msgid "Auto Upgrade"
+msgstr ""
+
+#: tpl/settings.tpl.php:70
+msgid "Enable this option to get the latest features at the first moment."
+msgstr ""
+
+#: tpl/settings.tpl.php:84
+msgid "Consume Log"
+msgstr ""
+
+#: tpl/settings.tpl.php:90
+msgid "Date"
+msgstr ""
+
+#: tpl/settings.tpl.php:91
+msgid "App ID"
+msgstr ""
+
+#: tpl/settings.tpl.php:92
+msgid "order ID"
+msgstr ""
+
+#: tpl/settings.tpl.php:93
+msgid "Number Consumed"
+msgstr ""
+
+#: tpl/settings.tpl.php:94
+msgid "Number Left"
+msgstr ""
+
+#: tpl/vendor_dotix_ammount_add.tpl.php:4
+#: tpl/vendor_dotix_ammount_edit.tpl.php:4
+msgid "Dotix Credit Unit"
+msgstr ""
+
+#: tpl/vendor_dotix_ammount_add.tpl.php:7
+#: tpl/vendor_dotix_ammount_edit.tpl.php:8
+msgid "Specify how many credits this allowance indicates."
+msgstr ""
+
+#: tpl/vendor_dotix_ammount_add.tpl.php:8
+#: tpl/vendor_dotix_ammount_edit.tpl.php:9
+msgid "Use %s to allow consume all the credits one time."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Dotix"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Ticket/credit system for WooCommerce"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WPDO"
+msgstr ""
