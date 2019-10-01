@@ -151,6 +151,9 @@ class Order extends Instance
 
 		foreach ( $order->get_items() as $item ) {
 			$product = $item->get_product() ;
+			if ( ! $product ) {
+				continue;
+			}
 			$credit = $product->get_meta( DOTIX_TAG ) ;
 			if ( ! $credit ) {
 				continue ;
