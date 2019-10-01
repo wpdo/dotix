@@ -4,21 +4,13 @@
  *
  * @since 1.0
  */
+namespace dotix;
+
 defined( 'WPINC' ) || exit ;
 
-class Dotix_REST
+class REST extends Instance
 {
-	private static $_instance ;
-
-	/**
-	 * Init
-	 *
-	 * @since  1.0
-	 * @access private
-	 */
-	private function __construct()
-	{
-	}
+	protected static $_instance;
 
 	/**
 	 * Init
@@ -26,7 +18,7 @@ class Dotix_REST
 	public function init()
 	{
 		// REST order hooks
-		add_action( 'rest_api_init', array( $this, 'api_init' ) ) ;
+		add_action( 'rest_api_init', array( $this, 'rest_api_init' ) ) ;
 	}
 
 	/**
@@ -35,10 +27,10 @@ class Dotix_REST
 	 * @since  1.0
 	 * @access public
 	 */
-	public function api_init()
+	public function rest_api_init()
 	{
-		$__order = Dotix_Order::get_instance() ;
-		$__vendor = Dotix_Vendor::get_instance() ;
+		$__order = Order::get_instance() ;
+		$__vendor = Vendor::get_instance() ;
 
 		register_rest_route( 'dotix/v1', '/vendor/(?P<id>\d+)/(?P<hash>\w+)', array(
 			'methods' => 'GET',
@@ -55,24 +47,6 @@ class Dotix_REST
 			'callback' => array( $__order, 'rest_tix_consume' ),
 		) );
 
-	}
-
-
-
-
-	/**
-	 * Get the current instance object.
-	 *
-	 * @since 1.0
-	 * @access public
-	 */
-	public static function get_instance()
-	{
-		if ( ! isset( self::$_instance ) ) {
-			self::$_instance = new self() ;
-		}
-
-		return self::$_instance ;
 	}
 
 }

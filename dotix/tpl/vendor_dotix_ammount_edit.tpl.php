@@ -1,7 +1,7 @@
 <?php defined( 'WPINC' ) || exit ; ?>
 
 <tr class="form-field term-group-wrap">
-	<th scope="row"><label for="dotix"><?php echo __( 'Dotix Amount', 'dotix' ); ?></label></th>
+	<th scope="row"><label for="dotix"><?php echo __( 'Dotix Credit Unit', 'dotix' ); ?></label></th>
 	<td>
 		<input type="text" name="dotix" value="<?php echo $curr ; ?>" />
 		<p class="description">

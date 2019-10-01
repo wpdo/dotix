@@ -1,7 +1,7 @@
 <?php defined( 'WPINC' ) || exit ; ?>
 
 <div class="form-field term-group">
-	<label for="dotix"><?php echo __( 'Dotix Amount', 'dotix' ) ; ?></label>
+	<label for="dotix"><?php echo __( 'Dotix Credit Unit', 'dotix' ) ; ?></label>
 	<input type="text" name="dotix" />
 	<p>
 		<?php echo __( 'Specify how many credits this allowance indicates.', 'dotix' ) ; ?>

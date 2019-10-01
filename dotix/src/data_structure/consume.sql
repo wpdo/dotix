@@ -1,0 +1,10 @@
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL DEFAULT '0',
+  `app_id` int(11) NOT NULL DEFAULT '0',
+  `num_consumed` int(11) NOT NULL DEFAULT '0',
+  `num_left` int(11) NOT NULL DEFAULT '0',
+  `dateline` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `order_id` (`order_id`),
+  KEY `app_id` (`app_id`),
+  KEY `dateline` (`dateline`)

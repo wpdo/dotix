@@ -4,21 +4,13 @@
  *
  * @since 1.0
  */
+namespace dotix;
+
 defined( 'WPINC' ) || exit ;
 
-class Dotix_Vendor
+class Vendor extends Instance
 {
-	private static $_instance ;
-
-	/**
-	 * Init
-	 *
-	 * @since  1.0
-	 * @access private
-	 */
-	private function __construct()
-	{
-	}
+	protected static $_instance ;
 
 	/**
 	 * Hooks init
@@ -63,7 +55,11 @@ class Dotix_Vendor
 	 */
 	public function qrcode_in_order_detail( $order )
 	{
-		$this->qrcode( $order->get_order_key() ) ;
+		if ( ! Conf::val( 'qrcode' ) ) {
+			return;
+		}
+
+		$this->qrcode( $order->get_order_key(), Conf::val( 'qrcode_size' ) );
 	}
 
 	/**
@@ -115,7 +111,7 @@ class Dotix_Vendor
 
 		$this->qrcode( $order->get_order_key(), 7, 1 );
 
-		echo '<br /> <h2>' . $order->get_meta( DOTIX_TAG ) . ' credits left</h2>';
+		echo '<br /> <h2>' . $order->get_meta( DOTIX_TAG ) . ' ' . Conf::val( 'credit_title' ) . ' left</h2>';
 	}
 
 	/**
@@ -292,11 +288,11 @@ class Dotix_Vendor
 				'update_item' => __( 'Update Dotix Set' ),
 				'add_new_item' => __( 'Add New Dotix Set' ),
 				'new_item_name' => __( 'New Dotix Set Name' ),
-				'menu_name' => __( 'Dotix Set' ),
+				'menu_name' => __( 'Dotix Unit Set' ),
 			),
 			// Control the slugs used for this taxonomy
 			'rewrite' => array(
-				'slug' => 'Dotix Set', // This controls the base slug that will display before each term
+				'slug' => 'Dotix Unit Set', // This controls the base slug that will display before each term
 				'with_front' => true, // Don't display the category base before "/Vendors/"
 				'hierarchical' => true // This will allow URL's like "/Vendors/boston/cambridge/"
 			),
@@ -342,7 +338,7 @@ class Dotix_Vendor
 	 */
 	public function dotix_amount_column_title( $columns )
 	{
-		$columns[ 'dotix' ] = __( 'Dotix Amount', 'dotix' ) ;
+		$columns[ 'dotix' ] = ucfirst( Conf::val( 'credit_title' ) ) . ' ' . __( 'Unit', 'dotix' ) ;
 		return $columns ;
 	}
 
@@ -373,56 +369,5 @@ class Dotix_Vendor
 		return $sortable ;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/**
-	 * Get the current instance object.
-	 *
-	 * @since 1.0
-	 * @access public
-	 */
-	public static function get_instance()
-	{
-		if ( ! isset( self::$_instance ) ) {
-			self::$_instance = new self() ;
-		}
-
-		return self::$_instance ;
-	}
 
 }

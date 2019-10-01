@@ -4,21 +4,13 @@
  *
  * @since 1.0
  */
-defined( 'WPINC' ) || exit ;
+namespace dotix;
 
-class Dotix_Product
+defined( 'WPINC' ) || exit;
+
+class Product extends Instance
 {
-	private static $_instance ;
-
-	/**
-	 * Init
-	 *
-	 * @since  1.0
-	 * @access private
-	 */
-	private function __construct()
-	{
-	}
+	protected static $_instance ;
 
 	/**
 	 * init
@@ -48,10 +40,10 @@ class Dotix_Product
 	{
 		$args = array(
 			'id' => DOTIX_TAG,
-			'label' => __( 'Containing credits', 'dotix' ),
+			'label' => sprintf( __( 'Containing %s', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ),
 			'class' => 'tix-custom-field',
 			'desc_tip' => true,
-			'description' => __( 'Enter the credits to be refilled to the order if users finished payment.', 'dotix' ),
+			'description' => __( 'Enter the credits to be refilled to the order if the user finish payment.', 'dotix' ),
 		) ;
 		woocommerce_wp_text_input( $args ) ;
 	}
@@ -77,7 +69,7 @@ class Dotix_Product
 	public function column_title( $columns )
 	{
 		//add column
-		$arr = array( DOTIX_TAG => __( 'Credits', 'dotix' ) ) ;
+		$arr = array( DOTIX_TAG => ucfirst( Conf::val( 'credit_title' ) ) ) ;
 
 		$first_arr = array_splice( $columns, 0, 6 ) ;
 		$columns = array_merge( $first_arr, $arr, $columns ) ;
@@ -112,23 +104,7 @@ class Dotix_Product
 			return ;
 		}
 
-		echo "<span class='product_meta--credits'>Credits containing: <strong>$credit</strong></span>" ;
-	}
-
-
-	/**
-	 * Get the current instance object.
-	 *
-	 * @since 1.0
-	 * @access public
-	 */
-	public static function get_instance()
-	{
-		if ( ! isset( self::$_instance ) ) {
-			self::$_instance = new self() ;
-		}
-
-		return self::$_instance ;
+		echo '<span class="product_meta--credits dotix-product">' . sprintf( __( '%s containing', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . ': <strong>' . $credit . '</strong></span>' ;
 	}
 
 }

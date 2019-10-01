@@ -1,9 +1,8 @@
 <?php
 /**
  * Plugin Name:       Dotix
- * Plugin URI:        https://wordpress.org/support/plugin/dotix/
  * Description:       Ticket/credit system for WooCommerce
- * Version:           1.1.1
+ * Version:           1.2
  * Author:            WPDO
  * License:           GPLv3
  * License URI:       http://www.gnu.org/licenses/gpl.html
@@ -31,22 +30,12 @@ if ( defined( 'DOTIX_V' ) ) {
 	return ;
 }
 
-define( 'DOTIX_V', '1.1.1' ) ;
+define( 'DOTIX_V', '1.2' ) ;
 
 ! defined( 'DOTIX_TAG' ) && define( 'DOTIX_TAG', 'dotix_credit' ) ;
 ! defined( 'DOTIX_DIR' ) && define( 'DOTIX_DIR', dirname( __FILE__ ) . '/' ) ;// Full absolute path '/usr/local/***/wp-content/plugins/dotix/' or MU
+! defined( 'DOTIX_PLUGIN_URL' ) && define( 'DOTIX_PLUGIN_URL', plugin_dir_url( __FILE__ ) ) ;// Full URL path '//example.com/wp-content/plugins/dotix/'
 
-require_once DOTIX_DIR . 'core.cls.php' ;
-require_once DOTIX_DIR . 'conf.cls.php' ;
-require_once DOTIX_DIR . 'gui.cls.php' ;
-require_once DOTIX_DIR . 'order.cls.php' ;
-require_once DOTIX_DIR . 'product.cls.php' ;
-require_once DOTIX_DIR . 'rest.cls.php' ;
-require_once DOTIX_DIR . 'vendor.cls.php' ;
+require_once DOTIX_DIR . 'autoload.php';
 
-Dotix::get_instance()->init() ;
-
-
-
-
-
+\dotix\Core::get_instance();

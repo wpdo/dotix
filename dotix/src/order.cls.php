@@ -4,21 +4,13 @@
  *
  * @since 1.0
  */
+namespace dotix;
+
 defined( 'WPINC' ) || exit ;
 
-class Dotix_Order
+class Order extends Instance
 {
-	private static $_instance ;
-
-	/**
-	 * Init
-	 *
-	 * @since  1.0
-	 * @access private
-	 */
-	private function __construct()
-	{
-	}
+	protected static $_instance ;
 
 	/**
 	 * Init
@@ -60,7 +52,7 @@ class Dotix_Order
 
 		$credits = $quantity * $credit ;
 
-		echo "<p>Credits containing : $credits</p>";
+		echo '<p class="dotix-containing">' . sprintf( __( '%s containing', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . ':' . $credits . '</p>';
 
 	}
 
@@ -76,14 +68,17 @@ class Dotix_Order
 			return ;
 		}
 
-		echo "<h2 class='woocommerce-order-details__title'>" . __( 'Credits remaining', 'dotix' ) . "</h2>
-			<span style='font-size: 2em; color: purple; font-weight: bold;background-color:#f8f8f8;padding: 2px 20px;margin-left:40px;'>$tixleft</span>
+		echo "<h2 class='woocommerce-order-details__title'>" . sprintf( __( '%s remaining', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . "</h2>
+			<style>
+				.dotix-remaining {font-size: 2em; color: purple; font-weight: bold;background-color:#f8f8f8;padding: 2px 20px;margin-left:40px;}
+			</style>
+			<span class='dotix-remaining'>$tixleft</span>
 		" ;
 
 		$status = $order->get_status() ;
 
 		if ( $status != 'completed' ) {
-			echo "<div class='woocommerce-error'>Credits not available yet due to order status: $status</div>" ;
+			echo '<div class="woocommerce-error">' . sprintf( __( '%s not available yet due to order status', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . ': ' . $status . '</div>' ;
 		}
 	}
 
@@ -96,8 +91,8 @@ class Dotix_Order
 	{
 		//add column
 		$arr = array(
-			DOTIX_TAG . '_total' => __( 'Credits Total', 'dotix' ),
-			DOTIX_TAG => __( 'Credits Left', 'dotix' ),
+			DOTIX_TAG . '_total' => sprintf( __( '%s Total', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ),
+			DOTIX_TAG => sprintf( __( '%s Left', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ),
 		) ;
 		$first_arr = array_splice( $columns, 0, 4 ) ;
 		$columns = array_merge( $first_arr, $arr, $columns ) ;
@@ -195,12 +190,14 @@ class Dotix_Order
 	 */
 	public function rest_tix_consume( $data )
 	{
+		global $wpdb;
+
 		$order = $this->_rest_validate_order( $data ) ;
 		if ( ! $order ) {
 			return new WP_Error( 'wrong_hash', 'Failed to validate hash key', array( 'status' => 422 ) ) ;
 		}
 
-		if ( $order->status != 'completed' ) {
+		if ( $order->get_status() != 'completed' ) {
 			return new WP_Error( 'wong_status', 'The order is not under completed status.', array( 'status' => 409 ) ) ;
 		}
 
@@ -211,7 +208,7 @@ class Dotix_Order
 		}
 
 		// Validate vendor info
-		if ( is_wp_error( $err = Dotix_Vendor::get_instance()->validate( $_POST[ 'app_id' ], $_POST[ 'app_key' ] ) ) ) {
+		if ( is_wp_error( $err = Vendor::get_instance()->validate( $_POST[ 'app_id' ], $_POST[ 'app_key' ] ) ) ) {
 			return $err ;
 		}
 
@@ -237,8 +234,14 @@ class Dotix_Order
 		$order->update_meta_data( DOTIX_TAG, $new_bal ) ;
 		$order->save() ;
 
+		$order_id = $order->get_id();
+
+		// Log
+		$q = 'INSERT INTO ' . Data::tb_consume() . ' SET order_id = %d, app_id = %d, num_consumed = %d, num_left = %d, dateline = %d' ;
+		$wpdb->query( $wpdb->prepare( $q, array( $order_id, $_POST[ 'app_id' ], $num, $new_bal, time() ) ) );
+
 		return array(
-			'order_id'	=> $order->get_id(),
+			'order_id'	=> $order_id,
 			'status'	=> $order->get_status(),
 			'consumed'	=> $num,
 			'balance'	=> $new_bal,
@@ -289,21 +292,6 @@ class Dotix_Order
 		$order = wc_get_order( $order_id ) ;
 
 		return $order ;
-	}
-
-	/**
-	 * Get the current instance object.
-	 *
-	 * @since 1.0
-	 * @access public
-	 */
-	public static function get_instance()
-	{
-		if ( ! isset( self::$_instance ) ) {
-			self::$_instance = new self() ;
-		}
-
-		return self::$_instance ;
 	}
 
 }
