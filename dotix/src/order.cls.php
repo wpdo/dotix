@@ -52,7 +52,7 @@ class Order extends Instance
 
 		$credits = $quantity * $credit ;
 
-		echo '<p class="dotix dotix-containing">' . sprintf( __( '%s containing', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . ':' . $credits . '</p>';
+		echo '<p class="dotix dotix-containing">' . sprintf( __( '%s containing', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . ': <strong>' . $credits . '</strong></p>';
 
 	}
 

@@ -3,7 +3,7 @@ Contributors: WPDO
 Tags: Credit/point system for WooCommerce, Ticket system for WooCommerce
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -75,6 +75,9 @@ Description: Not enough balance left in this order.
 This plugin will enable the connection between your app and WooCommerce orders for digital credits usage. It can be used to check the remaining credits in one order, or consume them.
 
 == Changelog ==
+
+= 1.2.3 - Oct 2 2019 =
+* GUI CSS tweaks.
 
 = 1.2.2 - Oct 2 2019 =
 * Appended CSS class to frontend elements.
