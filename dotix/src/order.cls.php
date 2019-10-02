@@ -52,7 +52,7 @@ class Order extends Instance
 
 		$credits = $quantity * $credit ;
 
-		echo '<p class="dotix-containing">' . sprintf( __( '%s containing', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . ':' . $credits . '</p>';
+		echo '<p class="dotix dotix-containing">' . sprintf( __( '%s containing', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . ':' . $credits . '</p>';
 
 	}
 
@@ -68,11 +68,11 @@ class Order extends Instance
 			return ;
 		}
 
-		echo "<h2 class='woocommerce-order-details__title'>" . sprintf( __( '%s remaining', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . "</h2>
+		echo "<h2 class='woocommerce-order-details__title dotix dotix-order-remaining_title'>" . sprintf( __( '%s remaining', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . "</h2>
 			<style>
-				.dotix-remaining {font-size: 2em; color: purple; font-weight: bold;background-color:#f8f8f8;padding: 2px 20px;margin-left:40px;}
+				.dotix-remaining_num {font-size: 2em; color: purple; font-weight: bold;background-color:#f8f8f8;padding: 2px 20px;margin-left:40px;}
 			</style>
-			<span class='dotix-remaining'>$tixleft</span>
+			<span class='dotix dotix-remaining_num'>$tixleft</span>
 		" ;
 
 		$status = $order->get_status() ;

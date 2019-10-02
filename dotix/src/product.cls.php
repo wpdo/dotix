@@ -104,7 +104,7 @@ class Product extends Instance
 			return ;
 		}
 
-		echo '<span class="product_meta--credits dotix-product">' . sprintf( __( '%s containing', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . ': <strong>' . $credit . '</strong></span>' ;
+		echo '<span class="product_meta--credits dotix dotix-product">' . sprintf( __( '%s containing', 'dotix' ), ucfirst( Conf::val( 'credit_title' ) ) ) . ': <strong>' . $credit . '</strong></span>' ;
 	}
 
 }
